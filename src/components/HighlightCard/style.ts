@@ -7,7 +7,7 @@ export const Container = styled.View`
 
     width: ${RFValue(300)}px;
     border-radius: 5px;
-    
+
     padding: 19px 23px;
     padding-bottom:  ${RFValue(42)}px;
     margin-right: 16px;
@@ -19,7 +19,7 @@ export const Header = styled.View`
 `;
 
 export const Title  = styled.Text`
-    font-size: ${RFValue(14)}px;
+    font-size: ${RFValue(18)}px;
     color: ${({theme}) => theme.colors.text_dark};
     font-family: ${({theme})=> theme.fonts.regular};
 `;
