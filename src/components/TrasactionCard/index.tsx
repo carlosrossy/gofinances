@@ -24,8 +24,8 @@ export function TransactionCard(){
                 <Category>
                     <Icon name='dollar-sign'/>
                     <CategoryName>Vendas</CategoryName>
-                    <Date>13/04/2020</Date>
                 </Category>
+                <Date>13/04/2020</Date>
             </Footer>
 
         </Container>
