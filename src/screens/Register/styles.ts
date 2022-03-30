@@ -31,3 +31,9 @@ export const Form = styled.View`
 `;
 
 export const Fields = styled.View``;
+
+export const TransactionsTypes = styled.View`
+    margin-top: 16px;
+    flex-direction: row;
+    justify-content: space-between;
+`;
