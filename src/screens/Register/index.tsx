@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { Modal } from 'react-native';
 
-import {Input} from '../../components/Forms/Input'
+import { Input } from '../../components/Forms/Input'
 import { Button } from '../../components/Forms/Button';
 import { TransactionTypeButton } from '../../components/Forms/TransactionTypeButton';
 import { CategorySelectButton } from '../../components/Forms/CategorySelectButton';
 
-import{ 
+import { CategorySelect } from '../CategorySelect';
+
+import {
     Container,
     Header,
     Title,
@@ -16,51 +18,73 @@ import{
 } from './styles';
 
 
-export function Register(){
-    const [TransactionType , setTransactionType] = useState('')
+export function Register() {
 
-    function HandleTransactionsTypeSelect(type : 'up' | 'down'){
+    const [TransactionType, setTransactionType] = useState('')
+    const [CategoryModalopen, setCategoryModalopen] = useState(false)
+
+    const [Category, setCategory] = useState({
+        key: 'category',
+        name: 'Categoria',
+    })
+
+    function HandleTransactionsTypeSelect(type: 'up' | 'down') {
         setTransactionType(type)
     }
 
-    return(
+    function hadleOpenSelectCategoryModal() {
+        setCategoryModalopen(true)
+    }
+
+    function hadleCloseSelectCategoryModal() {
+        setCategoryModalopen(false)
+    }
+
+    return (
         <Container>
             <Header>
                 <Title>Cadastro</Title>
             </Header>
 
-        <Form>
-            <Fields>
-                <Input
-                    placeholder='Nome'
-                />
-                <Input
-                    placeholder='Preço'
-                />
-
-                <TransactionsTypes>
-                    <TransactionTypeButton 
-                        type='up' 
-                        title='Income'
-                        onPress={ () => HandleTransactionsTypeSelect('up')}
-                        isActive={TransactionType === 'up'}
+            <Form>
+                <Fields>
+                    <Input
+                        placeholder='Nome'
+                    />
+                    <Input
+                        placeholder='Preço'
                     />
 
-                    <TransactionTypeButton 
-                        type='down' 
-                        title='Outcome'
-                        onPress={ () => HandleTransactionsTypeSelect('down')}
-                        isActive={TransactionType === 'down'}
-                    /> 
-                </TransactionsTypes>
+                    <TransactionsTypes>
+                        <TransactionTypeButton
+                            type='up'
+                            title='Income'
+                            onPress={() => HandleTransactionsTypeSelect('up')}
+                            isActive={TransactionType === 'up'}
+                        />
 
-                <CategorySelectButton title='Categoria'/>
-                
-            </Fields>
+                        <TransactionTypeButton
+                            type='down'
+                            title='Outcome'
+                            onPress={() => HandleTransactionsTypeSelect('down')}
+                            isActive={TransactionType === 'down'}
+                        />
+                    </TransactionsTypes>
 
-            <Button title='Enviar'/>
-        </Form>
-           
+                    <CategorySelectButton title={Category.name} onPress={hadleOpenSelectCategoryModal} />
+
+                </Fields>
+
+                <Button title='Enviar' />
+            </Form>
+
+            <Modal visible={CategoryModalopen}>
+                <CategorySelect
+                    category={Category}
+                    setCategory={setCategory}
+                    closeSelectCategory={hadleCloseSelectCategoryModal}
+                />
+            </Modal>
         </Container>
     )
 }
