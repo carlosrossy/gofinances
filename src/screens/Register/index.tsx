@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import { Modal } from 'react-native';
 
 import {Input} from '../../components/Forms/Input'
 import { Button } from '../../components/Forms/Button';
 import { TransactionTypeButton } from '../../components/Forms/TransactionTypeButton';
-import { CategorySelect } from '../../components/Forms/CategorySelect';
+import { CategorySelectButton } from '../../components/Forms/CategorySelectButton';
 
-import { 
+import{ 
     Container,
     Header,
     Title,
@@ -53,7 +54,7 @@ export function Register(){
                     /> 
                 </TransactionsTypes>
 
-                <CategorySelect title='Categoria'/>
+                <CategorySelectButton title='Categoria'/>
                 
             </Fields>
 

@@ -19,13 +19,13 @@ export default function App() {
     Poppins_500Medium,
     Poppins_700Bold
   })
-  if(!fontsLoaded){
-    return <AppLoading/>
+  if (!fontsLoaded) {
+    return <AppLoading />
   }
-  return(
+  return (
     <ThemeProvider theme={theme}>
-        <CategorySelect />
+      <CategorySelect />
     </ThemeProvider>
-  ) 
+  )
 
 }
